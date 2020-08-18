@@ -13,15 +13,15 @@ public class WeatherDefinitions {
     private Response response;
     private Root root;
     @When("I call API with city name {string}")
-    public void iCallAPIWithCityName(String CityName) {
-        Url = Url + CityName + LoadProperties.weather.getProperty("weather.appid");
-        root = CommonUtils.CallAndGetObj(Url, CityName);
+    public void iCallAPIWithCityName(String cityName) {
+        Url = Url + cityName + LoadProperties.weather.getProperty("weather.appid");
+        root = CommonUtils.CallAndGetObj(Url, cityName);
         CommonUtils.PrintAllInfo(root);
     }
 
     @Then("I should get weather info for {string}")
-    public void iShouldGetWeatherInfoFor(String CityName) {
-        CommonUtils.Assertions(root);
+    public void iShouldGetWeatherInfoFor(String cityName) {
+        CommonUtils.Assertions(root, cityName);
     }
 
     @Given("I have Open Weather Map Url")

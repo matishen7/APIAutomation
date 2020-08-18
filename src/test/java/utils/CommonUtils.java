@@ -25,8 +25,8 @@ public class CommonUtils {
         System.out.println(root.main.temp_max);
         System.out.println(root.main.temp_min);
     }
-    public static void Assertions(Root root){
-        Assert.assertNotNull(root);
+    public static void Assertions(Root root, String city){
+        Assert.assertNotNull("Weather info for "+ city + "can not be retrieved.", root);
     }
     public static Root CallAndGetObj(String Url, String city){
         System.out.println("Calling " + Url);
