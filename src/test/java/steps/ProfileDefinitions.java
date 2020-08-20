@@ -15,8 +15,6 @@ public class ProfileDefinitions {
     private Profile profiles;
     private String jsonString;
     private Response response;
-    private String postId;
-    String filePath = "src/test/java/other/id.txt";
 
     @Given("Endpoint to Profiles")
     public void endpointToProfiles() {
