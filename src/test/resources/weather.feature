@@ -15,3 +15,5 @@ Feature: Test Weather API
       |    London |
       |    Bishkek|
       |Washington |
+    |     Austin      |
+    |                 Houston|

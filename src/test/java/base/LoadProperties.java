@@ -10,6 +10,7 @@ import java.util.Set;
 public class LoadProperties {
 
     public static Properties weather = loadProperties("src/test/java/properties/weather.properties");
+    public static Properties jsonserver = loadProperties("src/test/java/properties/json-server.properties");
 
     private static Properties loadProperties(String filePath) {
         Properties properties = new Properties();

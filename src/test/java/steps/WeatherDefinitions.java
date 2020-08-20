@@ -15,7 +15,7 @@ public class WeatherDefinitions {
     @When("I call API with city name {string}")
     public void iCallAPIWithCityName(String cityName) {
         Url = Url + cityName + LoadProperties.weather.getProperty("weather.appid");
-        root = CommonUtils.CallAndGetObj(Url, cityName);
+        root = CommonUtils.GetWeatherInfo(Url, cityName);
         CommonUtils.PrintAllInfo(root);
     }
 
