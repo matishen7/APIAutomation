@@ -18,11 +18,11 @@ import java.util.Scanner;
 import static io.restassured.RestAssured.given;
 
 public class CommonUtils {
-    public static void PrintAllInfo(Root root){
+    public static void PrintAllInfo(Root root) {
         System.out.println(root.coord.lat);
         System.out.println(root.coord.lon);
-        for (Weather weather:root.weather
-             ) {
+        for (Weather weather : root.weather
+        ) {
             System.out.println(weather.description);
             System.out.println(weather.icon);
             System.out.println(weather.id);
@@ -33,10 +33,12 @@ public class CommonUtils {
         System.out.println(root.main.temp_max);
         System.out.println(root.main.temp_min);
     }
-    public static void Assertions(Root root, String city){
-        Assert.assertNotNull("Weather info for "+ city + "can not be retrieved.", root);
+
+    public static void Assertions(Root root, String city) {
+        Assert.assertNotNull("Weather info for " + city + "can not be retrieved.", root);
     }
-    public static Root GetWeatherInfo(String Url, String city){
+
+    public static Root GetWeatherInfo(String Url, String city) {
         System.out.println("Calling " + Url);
         System.out.println("Getting weather info for " + city);
         Response response = given().when().get(Url);
@@ -45,7 +47,8 @@ public class CommonUtils {
         Gson gson = new Gson();
         return gson.fromJson(bodyAsString, Root.class);
     }
-    public static Profile GetAllProfiles(String endpoint){
+
+    public static Profile GetAllProfiles(String endpoint) {
         System.out.println("Calling " + endpoint);
         System.out.println("Getting profiles...");
         Response response = given().when().get(endpoint);
@@ -56,6 +59,7 @@ public class CommonUtils {
         Profile profiles = gson.fromJson(bodyAsString, Profile.class);
         return profiles;
     }
+
     public static Response postJsonPayload(String payload, String endpoint) {
         return
                 given()
@@ -67,37 +71,9 @@ public class CommonUtils {
                         .extract()
                         .response();
     }
-    public static String toJsonString(Object o)
-    {
+
+    public static String toJsonString(Object o) {
         Gson gson = new Gson();
         return gson.toJson(o);
-    }
-    public static Integer ReadFromFile(String Url){
-        try {
-            File myObj = new File(Url);
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                System.out.println(data);
-                return Integer. parseInt(data);
-            }
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-        return null;
-    }
-    public static void WriteToFile(String path, Integer lastId){
-        File fold=new File(path);
-        fold.delete();
-        File fnew=new File(path);
-        try {
-            FileWriter f2 = new FileWriter(fnew, false);
-            f2.write(String.valueOf(lastId));
-            f2.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

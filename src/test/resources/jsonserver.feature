@@ -12,8 +12,8 @@ Feature: Test JSON-Server API
     When I send a request with GET Method to one profile with "<postId>"
     Then I should get one profile with "<postId>" and "<name>"
     Examples:
-      | postId | name |
-      | 13     | George  |
+      | postId | name   |
+      | 13     | George |
 
   Scenario Outline:
   Create one profile with given name and postId
